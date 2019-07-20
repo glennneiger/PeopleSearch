@@ -1,0 +1,880 @@
+@import 'branding';
+
+body {
+    overflow: hidden;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+
+    & > section {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        height: calc(100vh - 60px);
+        width: 100%;
+        overflow: auto;
+        transition: all 0.5s;
+        background: transparent;
+    }
+
+    sidebar-nav {
+        z-index: 9;
+        -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,.25);
+        -moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,.25);
+        box-shadow: 3px 3px 5px 0px rgba(0,0,0,.25);
+    }
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+
+.required::after {
+    content: "*";
+    color: $brand-danger;
+}
+
+/** Buttons **/
+
+.siq-btn-primary {
+    color: $brand-inverse;
+    background-color: $brand-primary;
+    &:hover,
+    &:active,
+    &:focus {
+        color: $brand-inverse;
+        background-color: $siq-blue-001;
+        border-color: $siq-blue-001;
+    }
+}
+
+.siq-btn-secondary {
+    color: $brand-inverse;
+    background-color: $brand-pink;
+    &:hover,
+    &:active,
+    &:focus {
+        color: $brand-inverse;
+        background-color: $siq-magenta-001;
+        border-color: $siq-magenta-001;
+    }
+}
+
+.siq-btn-danger {
+    color: $brand-inverse;
+    background-color: $brand-danger;
+    &:hover,
+    &:active,
+    &:focus {
+        color: $brand-inverse;
+        background-color: rgba($brand-danger, .75);
+        border-color: rgba($brand-danger, .75);
+    }
+}
+
+.siq-btn-inactive {
+    color: $brand-pink;
+    background-color: $brand-gray-light;
+    &:hover,
+    &:active,
+    &:focus {
+        color: $brand-inverse;
+        background-color: $siq-magenta-001;
+        border-color: $siq-magenta-001;
+    }
+}
+
+.siq-btn-inactive-v2 {
+    color: $brand-dark;
+    background-color: $brand-gray-light;
+    &:hover,
+    &:active,
+    &:focus {
+        color: $brand-primary;
+        background-color: $brand-gray-light;
+        border-color: transparent;
+    }
+}
+
+.siq-filter-active {
+    color: $brand-pink !important;
+    &:hover {
+        color: $brand-inverse !important;
+        background-color: $siq-magenta-001;
+        border-color: $siq-magenta-001;
+    }
+}
+
+.siq-filter-inactive {
+    color: $siq-gray-001 !important;
+    &:hover {
+        color: $brand-inverse !important;
+        background-color: $siq-magenta-001;
+        border-color: $siq-magenta-001;
+    }
+}
+
+// Button Blue
+.u-btn-blue {
+    color: #fff;
+    background-color: $brand-primary;
+}
+
+.u-btn-blue:hover,
+.u-btn-blue.active {
+    border-color: $siq-blue-001;
+    background-color: $siq-blue-001;
+}
+
+.u-btn-blue:hover,
+.u-btn-blue:focus,
+.u-btn-blue.active {
+    color: #fff;
+}
+
+.u-btn-blue.g-btn-hover-reset:hover,
+.u-btn-blue.g-btn-hover-reset.active {
+    background-color: $brand-primary;
+    border-color: $brand-primary;
+}
+
+.u-btn-blue.u-btn-hover-v1-1 {
+    overflow: hidden;
+}
+
+.u-btn-blue.u-btn-hover-v1-1::after,
+.u-btn-blue.u-btn-hover-v1-1:hover::after {
+    background-color: $siq-blue-002;
+}
+
+.u-btn-blue.u-btn-hover-v1-1:hover {
+    background-color: $brand-primary;
+    overflow: hidden;
+}
+
+.u-btn-blue.u-btn-hover-v1-2 {
+    overflow: hidden;
+}
+
+.u-btn-blue.u-btn-hover-v1-2::after,
+.u-btn-blue.u-btn-hover-v1-2:hover::after {
+    background-color: $siq-blue-002;
+}
+
+.u-btn-blue.u-btn-hover-v1-2:hover {
+    background-color: $brand-primary;
+    overflow: hidden;
+}
+
+.u-btn-blue.u-btn-hover-v1-3 {
+    overflow: hidden;
+}
+
+.u-btn-blue.u-btn-hover-v1-3::after,
+.u-btn-blue.u-btn-hover-v1-3:hover::after {
+    background-color: $siq-blue-002;
+}
+
+.u-btn-blue.u-btn-hover-v1-3:hover {
+    background-color: $brand-primary;
+    overflow: hidden;
+}
+
+.u-btn-blue.u-btn-hover-v1-4 {
+    overflow: hidden;
+}
+
+.u-btn-blue.u-btn-hover-v1-4::after,
+.u-btn-blue.u-btn-hover-v1-4:hover::after {
+    background-color: $siq-blue-002;
+}
+
+.u-btn-blue.u-btn-hover-v1-4:hover {
+    background-color: $brand-primary;
+    overflow: hidden;
+}
+
+.u-btn-blue.u-btn-hover-v2-1 {
+    overflow: hidden;
+}
+
+.u-btn-blue.u-btn-hover-v2-1::after,
+.u-btn-blue.u-btn-hover-v2-1:hover::after {
+    background-color: $siq-blue-002;
+}
+
+.u-btn-blue.u-btn-hover-v2-1:hover {
+    background-color: $brand-primary;
+    overflow: hidden;
+}
+
+.u-btn-blue.u-btn-hover-v2-2 {
+    overflow: hidden;
+}
+
+.u-btn-blue.u-btn-hover-v2-2::after,
+.u-btn-blue.u-btn-hover-v2-2:hover::after {
+    background-color: $siq-blue-002;
+}
+
+.u-btn-blue.u-btn-hover-v2-2:hover {
+    background-color: $brand-primary;
+    overflow: hidden;
+}
+
+// Button Magenta
+.u-btn-magenta {
+    color: #fff;
+    background-color: $brand-pink;
+}
+
+.u-btn-magenta:hover,
+.u-btn-magenta.active {
+    border-color: $siq-magenta-001;
+    background-color: $siq-magenta-001;
+}
+
+.u-btn-magenta:hover,
+.u-btn-magenta:focus,
+.u-btn-magenta.active {
+    color: #fff;
+}
+
+.u-btn-magenta.g-btn-hover-reset:hover,
+.u-btn-magenta.g-btn-hover-reset.active {
+    background-color: $brand-pink;
+    border-color: $brand-pink;
+}
+
+.u-btn-magenta.u-btn-hover-v1-1 {
+    overflow: hidden;
+}
+
+.u-btn-magenta.u-btn-hover-v1-1::after,
+.u-btn-magenta.u-btn-hover-v1-1:hover::after {
+    background-color: $siq-magenta-002;
+}
+
+.u-btn-magenta.u-btn-hover-v1-1:hover {
+    background-color: $brand-pink;
+    overflow: hidden;
+}
+
+.u-btn-magenta.u-btn-hover-v1-2 {
+    overflow: hidden;
+}
+
+.u-btn-magenta.u-btn-hover-v1-2::after,
+.u-btn-magenta.u-btn-hover-v1-2:hover::after {
+    background-color: $siq-magenta-002;
+}
+
+.u-btn-magenta.u-btn-hover-v1-2:hover {
+    background-color: $brand-pink;
+    overflow: hidden;
+}
+
+.u-btn-magenta.u-btn-hover-v1-3 {
+    overflow: hidden;
+}
+
+.u-btn-magenta.u-btn-hover-v1-3::after,
+.u-btn-magenta.u-btn-hover-v1-3:hover::after {
+    background-color: $siq-magenta-002;
+}
+
+.u-btn-magenta.u-btn-hover-v1-3:hover {
+    background-color: $brand-pink;
+    overflow: hidden;
+}
+
+.u-btn-magenta.u-btn-hover-v1-4 {
+    overflow: hidden;
+}
+
+.u-btn-magenta.u-btn-hover-v1-4::after,
+.u-btn-magenta.u-btn-hover-v1-4:hover::after {
+    background-color: $siq-magenta-002;
+}
+
+.u-btn-magenta.u-btn-hover-v1-4:hover {
+    background-color: $brand-pink;
+    overflow: hidden;
+}
+
+.u-btn-magenta.u-btn-hover-v2-1 {
+    overflow: hidden;
+}
+
+.u-btn-magenta.u-btn-hover-v2-1::after,
+.u-btn-magenta.u-btn-hover-v2-1:hover::after {
+    background-color: $siq-magenta-002;
+}
+
+.u-btn-magenta.u-btn-hover-v2-1:hover {
+    background-color: $brand-pink;
+    overflow: hidden;
+}
+
+.u-btn-magenta.u-btn-hover-v2-2 {
+    overflow: hidden;
+}
+
+.u-btn-magenta.u-btn-hover-v2-2::after,
+.u-btn-magenta.u-btn-hover-v2-2:hover::after {
+    background-color: $siq-magenta-002;
+}
+
+.u-btn-magenta.u-btn-hover-v2-2:hover {
+    background-color: $brand-pink;
+    overflow: hidden;
+}
+
+// Button Green
+.u-btn-green {
+    color: #fff;
+    background-color: $brand-green;
+}
+
+.u-btn-green:hover,
+.u-btn-green.active {
+    border-color: $siq-green-001;
+    background-color: $siq-green-001;
+}
+
+.u-btn-green:hover,
+.u-btn-green:focus,
+.u-btn-green.active {
+    color: #fff;
+}
+
+.u-btn-green.g-btn-hover-reset:hover,
+.u-btn-green.g-btn-hover-reset.active {
+    background-color: $brand-green;
+    border-color: $brand-green;
+}
+
+.u-btn-green.u-btn-hover-v1-1 {
+    overflow: hidden;
+}
+
+.u-btn-green.u-btn-hover-v1-1::after,
+.u-btn-green.u-btn-hover-v1-1:hover::after {
+    background-color: $siq-green-002;
+}
+
+.u-btn-green.u-btn-hover-v1-1:hover {
+    background-color: $brand-green;
+    overflow: hidden;
+}
+
+.u-btn-green.u-btn-hover-v1-2 {
+    overflow: hidden;
+}
+
+.u-btn-green.u-btn-hover-v1-2::after,
+.u-btn-green.u-btn-hover-v1-2:hover::after {
+    background-color: $siq-green-002;
+}
+
+.u-btn-green.u-btn-hover-v1-2:hover {
+    background-color: $brand-green;
+    overflow: hidden;
+}
+
+.u-btn-green.u-btn-hover-v1-3 {
+    overflow: hidden;
+}
+
+.u-btn-green.u-btn-hover-v1-3::after,
+.u-btn-green.u-btn-hover-v1-3:hover::after {
+    background-color: $siq-green-002;
+}
+
+.u-btn-green.u-btn-hover-v1-3:hover {
+    background-color: $brand-green;
+    overflow: hidden;
+}
+
+.u-btn-green.u-btn-hover-v1-4 {
+    overflow: hidden;
+}
+
+.u-btn-green.u-btn-hover-v1-4::after,
+.u-btn-green.u-btn-hover-v1-4:hover::after {
+    background-color: $siq-green-002;
+}
+
+.u-btn-green.u-btn-hover-v1-4:hover {
+    background-color: $brand-green;
+    overflow: hidden;
+}
+
+.u-btn-green.u-btn-hover-v2-1 {
+    overflow: hidden;
+}
+
+.u-btn-green.u-btn-hover-v2-1::after,
+.u-btn-green.u-btn-hover-v2-1:hover::after {
+    background-color: $siq-green-002;
+}
+
+.u-btn-green.u-btn-hover-v2-1:hover {
+    background-color: $brand-green;
+    overflow: hidden;
+}
+
+.u-btn-green.u-btn-hover-v2-2 {
+    overflow: hidden;
+}
+
+.u-btn-green.u-btn-hover-v2-2::after,
+.u-btn-green.u-btn-hover-v2-2:hover::after {
+    background-color: $siq-green-002;
+}
+
+.u-btn-green.u-btn-hover-v2-2:hover {
+    background-color: $brand-green;
+    overflow: hidden;
+}
+
+// Button Orange
+.u-btn-orange {
+    color: #fff;
+    background-color: $brand-orange;
+}
+
+.u-btn-orange:hover,
+.u-btn-orange.active {
+    border-color: $siq-orange-001;
+    background-color: $siq-orange-001;
+}
+
+.u-btn-orange:hover,
+.u-btn-orange:focus,
+.u-btn-orange.active {
+    color: #fff;
+}
+
+.u-btn-orange.g-btn-hover-reset:hover,
+.u-btn-orange.g-btn-hover-reset.active {
+    background-color: $brand-orange;
+    border-color: $brand-orange;
+}
+
+.u-btn-orange.u-btn-hover-v1-1 {
+    overflow: hidden;
+}
+
+.u-btn-orange.u-btn-hover-v1-1::after,
+.u-btn-orange.u-btn-hover-v1-1:hover::after {
+    background-color: $siq-orange-002;
+}
+
+.u-btn-orange.u-btn-hover-v1-1:hover {
+    background-color: $brand-orange;
+    overflow: hidden;
+}
+
+.u-btn-orange.u-btn-hover-v1-2 {
+    overflow: hidden;
+}
+
+.u-btn-orange.u-btn-hover-v1-2::after,
+.u-btn-orange.u-btn-hover-v1-2:hover::after {
+    background-color: $siq-orange-002;
+}
+
+.u-btn-orange.u-btn-hover-v1-2:hover {
+    background-color: $brand-orange;
+    overflow: hidden;
+}
+
+.u-btn-orange.u-btn-hover-v1-3 {
+    overflow: hidden;
+}
+
+.u-btn-orange.u-btn-hover-v1-3::after,
+.u-btn-orange.u-btn-hover-v1-3:hover::after {
+    background-color: $siq-orange-002;
+}
+
+.u-btn-orange.u-btn-hover-v1-3:hover {
+    background-color: $brand-orange;
+    overflow: hidden;
+}
+
+.u-btn-orange.u-btn-hover-v1-4 {
+    overflow: hidden;
+}
+
+.u-btn-orange.u-btn-hover-v1-4::after,
+.u-btn-orange.u-btn-hover-v1-4:hover::after {
+    background-color: $siq-orange-002;
+}
+
+.u-btn-orange.u-btn-hover-v1-4:hover {
+    background-color: $brand-orange;
+    overflow: hidden;
+}
+
+.u-btn-orange.u-btn-hover-v2-1 {
+    overflow: hidden;
+}
+
+.u-btn-orange.u-btn-hover-v2-1::after,
+.u-btn-orange.u-btn-hover-v2-1:hover::after {
+    background-color: $siq-orange-002;
+}
+
+.u-btn-orange.u-btn-hover-v2-1:hover {
+    background-color: $brand-orange;
+    overflow: hidden;
+}
+
+.u-btn-orange.u-btn-hover-v2-2 {
+    overflow: hidden;
+}
+
+.u-btn-orange.u-btn-hover-v2-2::after,
+.u-btn-orange.u-btn-hover-v2-2:hover::after {
+    background-color: $siq-orange-002;
+}
+
+.u-btn-orange.u-btn-hover-v2-2:hover {
+    background-color: $brand-orange;
+    overflow: hidden;
+}
+
+/** Badges **/
+
+.badge-success {
+    background: $brand-success !important;
+    color: $brand-inverse !important;
+}
+
+.badge-info {
+    background: $brand-info !important;
+    color: $brand-inverse !important;
+}
+
+.badge-warning {
+    background: $brand-warning !important;
+    color: $brand-inverse !important;
+}
+
+.badge-danger {
+    background: $brand-danger !important;
+    color: $brand-inverse !important;
+}
+
+.badge-alert {
+    background: $brand-alert !important;
+    color: $brand-inverse !important;
+}
+
+.badge-queued {
+    background: $brand-pink !important;
+    color: $brand-inverse !important;
+}
+
+.badge-progress {
+    background: $brand-orange !important;
+    color: $brand-inverse !important;
+}
+
+.badge-completed {
+    background: $brand-green !important;
+    color: $brand-inverse !important;
+}
+
+/** Borders **/
+
+.siq-brd-gray-light-v4 {
+    border: 1px solid #eee;
+}
+
+.siq-brd-pink--hover:hover {
+    border-color: $brand-pink !important;
+}
+
+.siq-brd-blue {
+    border: 1px solid $brand-primary !important;
+}
+
+.siq-brd-blue--hover:hover {
+    border-color: $brand-primary !important;
+}
+
+.siq-brd-green--hover:hover {
+    border-color: $brand-green !important;
+}
+
+.siq-brd-orange--hover:hover {
+    border-color: $brand-orange !important;
+}
+
+.siq-brd-purple--hover:hover {
+    border-color: $brand-purple !important;
+}
+
+.siq-brd-danger {
+    border: 1px solid $brand-danger !important;
+}
+
+.siq-brd-danger--hover:hover {
+    border-color: $brand-danger !important;
+}
+
+/** General Brand Coloring **/
+
+.siq-color-pink {
+    color: $brand-pink;
+}
+
+.siq-color-blue {
+    color: $brand-primary;
+}
+
+.siq-color-green {
+    color: $brand-green;
+}
+
+.siq-color-orange {
+    color: $brand-orange;
+}
+
+.siq-color-purple {
+    color: $brand-purple;
+}
+
+.siq-color-danger {
+    color: $brand-danger;
+}
+
+.siq-color-inverse {
+    color: $brand-inverse !important;
+}
+
+.siq-color-pink--hover:hover {
+    color: $brand-pink !important;
+}
+
+.siq-color-blue--hover:hover {
+    color: $brand-primary !important;
+}
+
+.siq-color-green--hover:hover {
+    color: $brand-green !important;
+}
+
+.siq-color-orange--hover:hover {
+    color: $brand-orange !important;
+}
+
+.siq-color-purple--hover:hover {
+    color: $brand-purple !important;
+}
+
+.siq-color-danger--hover:hover {
+    color: $brand-danger !important;
+}
+
+.siq-color-inverse--hover:hover {
+    color: $brand-inverse !important;
+}
+
+/** Scrollbars **/
+
+.siq-scrollbar-pink {
+    ::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: $brand-pink;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: $brand-pink;
+    }
+    
+    ::-webkit-scrollbar-thumb:active {
+        background: $brand-pink;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: rgba($brand-dark, 0.75);
+    }
+    
+    ::-webkit-scrollbar-track:hover {
+        background: rgba($brand-dark, 0.75);
+    }
+    
+    ::-webkit-scrollbar-track:active {
+        background: rgba($brand-dark, 0.75);
+    }    
+}
+
+/** General Misc **/
+
+.siq-full-width {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+}
+
+.siq-panel-scroll {
+    max-height: 33.143em; // 464px or 10 users/rows exactly
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+// header {
+//     padding: 50px 0 20px 0;
+//     border-bottom: 1px solid #d0d1d2;
+// }
+
+.margin-v {
+    margin: 10px 0;
+}
+
+.margin-h {
+    margin: 0 5px;
+}
+
+.margin-v-2x {
+    margin: 20px 0;
+}
+
+.margin-v-3x {
+    margin: 30px 0;
+}
+
+.margin-v-4x {
+    margin: 40px 0;
+}
+
+.margin-v-10x {
+    margin: 100px 0;
+}
+
+// ul.no-margin, ol.no-margin {
+//     padding: 0 1em;
+// }
+
+.padding {
+    padding: 10px;
+}
+
+.padding-2x {
+    padding: 20px;
+}
+
+.padding-h {
+    padding: 0 10px;
+}
+
+.padding-v {
+    padding: 10px 0;
+}
+
+// .round-2x {
+//     background-color: #fff;
+//     border-radius: 100%;
+//     width: 42px;
+//     height: 42px;
+//     .glyphicon {
+//         padding: 12px 14px;
+//     }
+// }
+// .column-20p {
+//     width: 20%;
+// }
+
+.column-50p {
+    width: 50%;
+}
+
+// .btn .glyphicon {
+//     margin-right: 8px;
+// }
+// .btn-set .btn {
+//     margin-right: 8px;
+// }
+
+.mig-loading {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bg-0 {
+    background: none;
+}
+
+.bg-w-75 {
+    background-color: rgba(#fff, 0.75);
+}
+
+.fa-15x {
+  font-size: 1.5em;
+}
+
+/** Flex Table Component (with hoverable rows) **/
+
+.c-table-flex {
+    display: flex;
+    flex-flow: column nowrap;
+    flex: 1 1 auto;
+    line-height: 1.5rem;
+    border-collapse: collapse;
+
+    .c-th-flex {
+        display: none;
+        font-weight: 400;
+    }
+
+    .c-th-flex > .c-td-flex {
+        justify-content: center;
+        align-items: center;
+        width: -moz-max-content;
+        width: max-content;
+    }
+    
+    .c-tr-flex {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        line-height: 2rem;
+    }
+
+    .c-td-flex {
+        display: flex;
+        flex-flow: row nowrap;
+        flex-grow: 1;
+        flex-basis: 0;
+        padding: 0.5em;
+        word-break: break-word;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 0px;
+        white-space: nowrap;
+        border-bottom: 1px solid #ced4da;
+    }
+}
+
+/** Tooltip **/
+.tooltip {
+    .arrow::before {
+        border-right-color: rgba(0, 0, 0, 0.75) !important;
+    }
+
+    .tooltip-inner {
+        background-color: rgba(0, 0, 0, 0.75) !important;
+    }
+}

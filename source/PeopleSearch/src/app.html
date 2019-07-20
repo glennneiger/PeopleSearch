@@ -1,0 +1,23 @@
+<template>
+    <require from="font-awesome/css/font-awesome.min.css"></require>
+    <require from="bootstrap/css/bootstrap.min.css"></require>
+    <require from="simple-line-icons/css/simple-line-icons.css"></require>
+    <require from="toastr/build/toastr.min.css"></require>
+    <require from="./main.css"></require>
+    <require from="./branding.css"></require>
+    <require from="./app.css"></require>
+    <require from="resources/elements/header/header"></require>
+
+    <loading-indicator loading.bind="router.isNavigating || api.isRequesting"></loading-indicator>
+
+    <header-nav user.bind="user" sidebar-collapsed.two-way="sidebarCollapsed"></header-nav>
+
+    <main>
+        <!-- Page Content  -->
+        <section>
+
+            <router-view class="h-100 overflow-hidden"></router-view>
+        </section>
+    </main>
+
+</template>

@@ -1,0 +1,6 @@
+{
+  "rules": {
+      "no-var-keyword": true
+  },
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}

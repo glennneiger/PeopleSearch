@@ -1,0 +1,23 @@
+<template>
+
+    <div class="dropdown" ref="dropdown">
+        <input class="form form-control ${inputClass}" placeholder.bind="placeholder" ref="input"
+            value.bind="filter & debounce:debounce" disabled.bind="disabled" id.bind="id"
+            autocomplete.bind="autocomplete ? 'on' : 'off'">
+
+        <div class="dropdown-menu">
+            <h6 class="dropdown-header text-center" show.bind="displayData.length == 0 && !loading"
+                innerhtml.bind="noResultsText"></h6>
+            <h6 class="dropdown-header text-center" show.bind="loading" innerhtml.bind="loadingText"></h6>
+
+            <template repeat.for="item of displayData">
+                <template part="item-template" replaceable>
+                    <a class="dropdown-item ${focusedItem === item  ? 'active' : ''}" href="javascript:void(0)"
+                        show.bind="!loading" click.delegate="itemSelected(item)"
+                        innerhtml.bind="getName(item) | searchInputHighlight:filter"></a>
+                </template>
+            </template>
+        </div>
+    </div>
+
+</template>

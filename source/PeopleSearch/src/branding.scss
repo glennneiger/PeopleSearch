@@ -1,0 +1,44 @@
+//## SIQ Color Palette
+$siq-blue-000: #26272a;
+$siq-blue-001: #36c0ee;
+$siq-blue-002: #00b8da;
+$siq-blue-003: #0000FF;
+
+$siq-green-000: #9ccb3b;
+$siq-green-001: #93c83d;
+$siq-green-002: #44b787;
+
+$siq-orange-000: #f7941e;
+$siq-orange-001: #f6931e;
+$siq-orange-002: #fabf45;
+$siq-orange-003: #faaf40;
+
+$siq-yellow-000: #fff200;
+$siq-yellow-001: #fff472;
+
+$siq-magenta-000: #ce2575;
+$siq-magenta-001: #d32778;
+$siq-magenta-002: #b3438a;
+$siq-magenta-003: #bf3580;
+
+$siq-gray-000: #5d5e5e;
+$siq-gray-002: #414042;
+$siq-gray-001: #b0b0b0;
+
+//## Brand Color Palette
+$brand-primary: $siq-blue-000;
+$brand-green: $siq-green-001;
+$brand-orange: $siq-orange-001;
+$brand-pink: $siq-magenta-000;
+$brand-purple: $siq-magenta-003;
+$brand-yellow: $siq-yellow-000;
+
+$brand-success: #4CAF50;
+$brand-info: #2196F3;
+$brand-warning: #FF9800;
+$brand-danger: #F44336;
+$brand-alert: #ce2575;
+
+$brand-dark: $siq-gray-001;
+$brand-inverse: #ffffff;
+$brand-gray-light: #eeeeee;
