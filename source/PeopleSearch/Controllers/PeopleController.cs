@@ -28,36 +28,9 @@ namespace PeopleSearch.Controllers
         }
 
         [HttpGet]
-        [Route("{id:int}", Name = "GetById")]
-        [ProducesResponseType(typeof(Person), 200)]
-        [ProducesResponseType(404)]
-        [ProducesResponseType(400)]
-        public async Task<IActionResult> GetById([FromRoute] int id)
-        {
-            try
-            {
-                var person = await peopleService.GetAsync(id);
-
-                if (person == null)
-                {
-                    logger.LogWarning(1404, $"The person with id '{id}' was not found.");
-                    return NotFound(new { message = NotFoundMessage });
-                }
-
-                return this.Ok(person);
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(1500, ex, $"An error occurred while attempting to retrieve a person. ID: {id}");
-                return StatusCode(500, new { Message = SystemError });
-            }
-
-        }
-
-        [HttpGet]
         [Route("list")]
-        [ProducesResponseType(typeof(IEnumerable<Person>), 200)]
-        [ProducesResponseType(400)]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(500)]
         public async Task ListPeople([FromQuery] int skip, [FromQuery] int take)
         {
             try
@@ -86,7 +59,7 @@ namespace PeopleSearch.Controllers
         [HttpGet]
         [Route("find/{search}")]
         [ProducesResponseType(typeof(IEnumerable<Person>), 200)]
-        [ProducesResponseType(400)]
+        [ProducesResponseType(500)]
         public async Task<IActionResult> FindPeople([FromRoute] string search, [FromQuery] int skip, [FromQuery] int take)
         {
             try
@@ -102,9 +75,35 @@ namespace PeopleSearch.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("{id:int}")]
+        [ProducesResponseType(typeof(Person), 200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
+        public async Task<IActionResult> GetPerson([FromRoute] int id)
+        {
+            try
+            {
+                var person = await peopleService.GetAsync(id);
+
+                if (person == null)
+                {
+                    logger.LogWarning(1404, $"The person with id '{id}' was not found.");
+                    return NotFound(new { message = NotFoundMessage });
+                }
+
+                return this.Ok(person);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(1500, ex, $"An error occurred while attempting to retrieve a person. ID: {id}");
+                return StatusCode(500, new { Message = SystemError });
+            }
+        }
+
         [HttpPost]
-        [ProducesResponseType(typeof(Person), 201)]
-        [ProducesResponseType(400)]
+        [ProducesResponseType(typeof(Person),201)]
+        [ProducesResponseType(500)]
         public async Task<IActionResult> PostPerson([FromBody] Person person)
         {
             try
@@ -131,9 +130,8 @@ namespace PeopleSearch.Controllers
         }
 
         [HttpPut]
-        [ProducesResponseType(typeof(Person), 201)]
+        [ProducesResponseType(204)]
         [ProducesResponseType(400)]
-        [ProducesResponseType(404)]
         [ProducesResponseType(500)]
         public async Task<IActionResult> PutPerson([FromBody] Person person)
         {
@@ -161,9 +159,8 @@ namespace PeopleSearch.Controllers
         }
 
         [HttpDelete]
-        [ProducesResponseType(typeof(Person), 201)]
+        [ProducesResponseType(204)]
         [ProducesResponseType(400)]
-        [ProducesResponseType(404)]
         [ProducesResponseType(500)]
         public async Task<IActionResult> DeletePerson([FromBody] Person person)
         {
