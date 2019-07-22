@@ -25,3 +25,6 @@ open the solution in VS and build
  2. Run Aurelia from CLI
  - Run the following in your command line tool: `au build --watch --env local`
  3. Access app using Chrome at `http://localhost:5000`
+
+
+![alt text](screen.png "screen shot")
