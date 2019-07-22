@@ -26,9 +26,10 @@ open the solution in VS and build
  - Run the following in your command line tool: `au build --watch --env local`
  3. Access app using Chrome at `http://localhost:5000`
 
-
+# Screens
+## Home
 ![alt text](screen.png "Home screen shot")
-
+## Search
 ![alt text](screen1.png "Search screen shot")
-
+## New Person
 ![alt text](screen2.png "New person screen shot")
