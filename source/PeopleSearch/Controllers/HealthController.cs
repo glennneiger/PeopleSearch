@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PeopleSearch.Models;
 
-namespace SiriusIQ.Web.MigrationPortal.Controllers
+namespace PeopleSearch.Controllers
 {
     [Route("health")]
     public class HealthController : Controller
