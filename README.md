@@ -28,5 +28,7 @@ open the solution in VS and build
 
 
 ![alt text](screen.png "Home screen shot")
+
 ![alt text](screen1.png "Search screen shot")
+
 ![alt text](screen2.png "New person screen shot")
