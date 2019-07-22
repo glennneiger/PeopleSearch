@@ -17,7 +17,7 @@
   "include": [
     "./src/**/*.ts",
     "./test/**/*.ts",
-    "./custom_typings/**/*.d.ts", "Middleware", "../../tests/PeopleSearchTests/Extensions/GuardExtensionsTests.cs", "../../tests/PeopleSearchTests/Data/Services/PeopleRepositoryTests.cs", "Data/Entities", "Data/Contexts", "Data/Services/PeopleContext.cs", "Data/Services/IPeopleService.cs"
+    "./custom_typings/**/*.d.ts", "Middleware", "../../tests/PeopleSearchTests/Extensions/GuardExtensionsTests.cs", "../../tests/PeopleSearchTests/Data/Services/PeopleRepositoryTests.cs", "Data/Entities", "Data/Contexts", "Data/Services/PeopleContext.cs", "Data/Services/IPeopleService.cs", "src/people", "Controllers/PeopleDataController.cs"
   ],
   "exclude": [
     "node_modules",

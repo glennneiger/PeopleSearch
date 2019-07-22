@@ -11,10 +11,12 @@ namespace PeopleSearch.Data.Services
         Task UpdateAsync(Person person);
         Task DeleteAsync(int id);
         Task<int> CountAsync();
+        Task<int> CountAsync(string searchString);
         Task<IEnumerable<Person>> FindAsync(string searchString, int skip = 0, int take = 10);
         Task<IEnumerable<Person>> ListAsync(int skip = 0, int take = 10);
         Task<Person> GetAsync(int id);
         Task<bool> SaveAsync();
         Task<bool> ExistsAsync(int id);
+        Task<IEnumerable<NameStat>> NameStatsAsync();
     }
 }

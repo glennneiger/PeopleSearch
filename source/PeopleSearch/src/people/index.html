@@ -1,5 +1,66 @@
 <template>
-    <section class="margin-v-2x">
-       
-    </section>
+    <require from="../app.css"></require>
+    <require from="resources/value-converters/number-format"></require>
+
+    <!-- Loading Indicator -->
+    <div if.bind="!isLoaded" class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+            <span class="sr-only" aria-hidden="true">Loading...</span>
+        </div>
+    </div>
+
+    <article class="activity-listing container g-py-40">
+        <div>
+            <!-- Stats header -->
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="h3 text-uppercase mb-3">People Statistics</h2>
+                </div>
+            </div>
+            <div class="row col-md-12 g-mb-0" if.bind="isLoaded">
+                <!-- Display if loaded -->
+                <div class="g-bg-gray-light-v5 g-pa-50 siq-brd-gray-light-v4">
+                    <div class="container">
+                        <div class="row justify-content-md-around">
+                            <!-- Total People -->
+                            <div class="col align-self-md-center">
+                                <h2 class="text-uppercase g-color-primary">${stats.totalPeople | numberFormat:'0,0'} total people and counting!</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="migration-list-grid container g-py-40">
+            <!-- Name Stats Grid -->
+            <div class="row g-my-10">
+                <div class="table-responsive" >
+                    <table class="table table-hover bg-w-75">
+                        <thead>
+                            <tr>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Count</th>
+                            </tr>
+                        </thead>
+                        <tbody  style="background: white; overflow-y: scroll;">
+                            <tr if.bind="!stats.nameStats.length">
+                                <td colspan="3">
+                                    <center class="g-py-30">
+                                        <strong>No name stats available</strong>
+                                    </center>
+                                </td>
+                            </tr>
+                            <tr repeat.for="nameStat of stats.nameStats">
+                                <td class="g-py-10 align-middle" click.trigger="goToMigrationStatsGrid(migration.externalId)">
+                                    <span class="d-block g-mb-5 h5 g-cursor-pointer">${nameStat.lastName}</span>
+                                </td>
+                                <td class="g-py-10 align-middle" click.trigger="goToMigrationStatsGrid(migration.externalId)">
+                                    <span class="d-block g-mb-5 h5 g-cursor-pointer">${nameStat.count | numberFormat:'0,0'}</span>
+                                </td>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </article>
 </template>

@@ -1,0 +1,82 @@
+@import '../branding';
+
+.component-grid {
+    background: #eeeeee;
+
+    .c-table-flex {
+        .c-tr-flex {
+            line-height: 4rem;
+
+            center {
+                flex: 1 1 100% !important;
+            }
+
+            &.c-th-flex {
+                line-height: 3rem !important;
+            }
+        }
+
+        // Component Select
+        .c-td-flex:first-child {
+            flex: 0 0 5%;
+        }
+
+        // Component Name
+        .c-td-flex:nth-child(2) {
+            flex: 1 1 25%;
+        }
+
+        // Component Version
+        .c-td-flex:nth-child(3) {
+            flex: 1 1 10%;
+        }
+
+        // Component Labor Category
+        .c-td-flex:nth-child(4) {
+            flex: 1 1 10%;
+        }
+
+        // Component Description
+        .c-td-flex:nth-child(5) {
+            flex: 1 1 35%;
+        }
+
+        // Component Actions
+        .c-td-flex:nth-child(6) {
+            flex: 1 1 15%;
+        }
+    }
+}
+
+.basic-info-shadow {
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,.25);
+    -moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,.25);
+    box-shadow: 3px 3px 5px 0px rgba(0,0,0,.25);
+}
+
+.page-link {
+    color: #555555;
+
+    &:hover {
+        color: $brand-pink;
+    }
+}
+
+.page-link-active {
+    background: $brand-pink;
+    border-color: $brand-pink;
+
+    span {
+        color: $brand-inverse;
+    }
+}
+
+.page-item {
+    .disabled {
+        background: $brand-gray-light;
+
+        &:hover {
+            color: #555555;
+        }
+    }
+}

@@ -1,9 +1,11 @@
+import * as numeral from 'numeral'
+
 export class NumberFormatValueConverter {
-    toView(value) {
+    toView(value: number, format: string) {
         if (value === null || value === undefined) {
             return '--';
         }
-
-        return Number.prototype.toLocaleString.call(value);
+        var string = numeral(value).format(format);
+        return string;
     }
 }

@@ -8,6 +8,7 @@ namespace PeopleSearch.Data.Contexts
 {
     public class PeopleContext : DbContext
     {
+        public DbQuery<NameStat> NameStats { get; set; }
         public DbSet<Person> People { get; set; }
 
         public PeopleContext(DbContextOptions<PeopleContext> options) : base(options) { }

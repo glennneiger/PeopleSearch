@@ -16,8 +16,8 @@ namespace PeopleSearchTests.Controllers
     public class PeopleControllerTests : TestBase
     {
         //private Mock<ITelemetryService> mockTelemetryService;
-        private PeopleController controller;
-        private Mock<ILogger<PeopleController>> mockLogger;
+        private PeopleDataController controller;
+        private Mock<ILogger<PeopleDataController>> mockLogger;
         private Mock<IPeopleService> mockPeopleService;
 
         [ClassInitialize]
@@ -37,11 +37,11 @@ namespace PeopleSearchTests.Controllers
         {
             base.TestInitialize();
 
-            mockLogger = new Mock<ILogger<PeopleController>>();
+            mockLogger = new Mock<ILogger<PeopleDataController>>();
 
             mockPeopleService = new Mock<IPeopleService>();
 
-            controller = new PeopleController(mockPeopleService.Object, mockLogger.Object);
+            controller = new PeopleDataController(mockPeopleService.Object, mockLogger.Object);
 
             var request = new Mock<HttpRequest>();
             request.SetupGet(r => r.Headers).Returns(new Mock<IHeaderDictionary>().Object);

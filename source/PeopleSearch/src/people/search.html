@@ -1,0 +1,155 @@
+<template >
+    <require from="./search.css"></require>
+    <require from="resources/value-converters/number-format"></require>
+    <require from="resources/attributes/enter-press"></require>
+
+    <div class="component-grid d-flex flex-column container-fluid g-px-0" style="height: calc(100vh - 60px);">
+        <!-- Header -->
+        <div class="row g-mx-0 w-100 align-items-end bg-w-75" ref="header">
+            <div class="row w-100 g-mx-0 align-items-center">
+                <div class="d-flex flex-column">
+                    <p class="g-mb-0 g-pa-15 display-4 text-uppercase siq-color-blue">Find People</p>
+                </div>
+                <div class="d-flex flex-column ml-auto" style="width: 40%;">
+                    <div class="row g-mx-0 justify-content-end">
+                        <button class="btn u-btn-blue basic-info-shadow g-mx-15" type="button" click.trigger="openEdit()">
+                            <font-awesome-icon class="g-mr-10" icon="plus"></font-awesome-icon>Create
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-100"></div>
+        </div>
+
+        <div class="basic-info-shadow" style="background: white; overflow-y: scroll;">
+            <!-- Grid -->
+            <div class="row g-mx-0 w-100 g-py-30 g-px-15">
+                <span if.bind="activated && !isProcessing">${peopleCount | numberFormat:'0,0'} people found</span>
+                <!-- Paging Options -->
+                <div class="input-group ml-auto g-mr-30" style="width: 20%;">
+                    <label class="form-check u-check g-pl-25" style="white-space:nowrap">
+                        <input class="hidden-xs-up g-pos-abs g-top-5 g-left-5" type="checkbox" checked.bind="goSlow">
+                        simulate slow server
+                    </label>
+                </div>
+                <div class="input-group g-mr-30" style="width: 30%;">
+                    <div class="input-group-prepend">
+                        <label for="" class="input-group-text">Search:</label>
+                    </div>
+                    <input class="form-control" type="text" value.two-way="query" focus.one-time="true" enter-press.call="goSearch()">
+                    <button class="ml-auto btn btn-sm btn-secondary btn-ok" type="button" click.trigger="goSearch()">Go</button>
+                </div>
+                <!-- Paging Options -->
+                <div class="input-group g-mr-30" style="width: 10%;" if.bind="people.length">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text">Size:</label>
+                    </div>
+                    <select class="custom-select text-center g-cursor-pointer" name="pageSize" value.bind="pageSize">
+                        <option class="g-py-10 g-cursor-pointer" model.bind="option" repeat.for="option of pageSizeOptions">${option}</option>
+                    </select>
+                </div>
+                <!-- Page Select -->
+                <div class="input-group" style="width: 10%;" if.bind="people.length">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text">Page:</label>
+                    </div>
+                    <select class="custom-select g-cursor-pointer" name="page" value.bind="currentPage" change.trigger="goToPage(currentPage)">
+                        <option class="g-py-10 g-cursor-pointer" model.bind="index" repeat.for="index of pageCount">
+                            ${index + 1}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="row g-mx-0 w-100" if.bind="activated">
+                <fieldset class="bg-w-75 col-md-12 g-px-0">
+                    <div class="c-table-flex">
+                        <div class="c-tr-flex c-th-flex">
+                            <div class="c-td-flex text-center"></div>
+                            <div class="c-td-flex">
+                                <span class="siq-full-width"><strong>Id</strong></span>
+                            </div>
+                            <div class="c-td-flex text-center">
+                                <span class="siq-full-width"><strong>First Name</strong></span>
+                            </div>
+                            <div class="c-td-flex text-center">
+                                <span class="siq-full-width"><strong>Last Name</strong></span>
+                            </div>
+                            <div class="c-td-flex text-center">
+                                <span class="siq-full-width"><strong>Phone Number</strong></span>
+                            </div>
+                            <div class="c-td-flex text-center"></div>
+                        </div>
+                        <div class="c-tr-flex g-py-80" if.bind="people.length === 0 && !isProcessing">
+                            <center class="c-td-flex text-center g-brd-none g-py-0">
+                                <p class="lead siq-full-width g-mb-0">No people available.</p>
+                            </center>
+                        </div>
+                        <!-- List Loading Indicator -->
+                        <div class="d-flex justify-content-center" if.bind="isProcessing" style="margin-top:5px;">
+                            <div class="spinner-border" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+
+
+                        <div class="c-tr-flex" repeat.for="person of people" if.bind="!isProcessing">
+                            <!-- Space -->
+                            <div class="c-td-flex d-flex flex-column siq-full-width justify-content-center align-items-center">
+                            </div>
+                            <div class="c-td-flex d-flex flex-column siq-full-width justify-content-center align-items-start">
+                                <span>${person.id}</span>
+                            </div>
+                            <div class="c-td-flex d-flex flex-column siq-full-width justify-content-center align-items-center">
+                                <span>${person.firstName}</span>
+                            </div>
+                            <div class="c-td-flex d-flex flex-column siq-full-width justify-content-center align-items-center">
+                                ${person.lastName}
+                            </div>
+                            <div class="c-td-flex d-flex flex-column siq-full-width justify-content-center align-items-center">
+                                ${person.phoneNumber}
+                            </div>
+                            <!-- Actions -->
+                            <div class="c-td-flex justify-content-center align-items-center">
+                                <button class="btn u-btn-orange basic-info-shadow" type="button" click.trigger="view(person, false)">
+                                    <font-awesome-icon icon="folder-open"></font-awesome-icon>
+                                </button>
+                                <button class="btn u-btn-green g-mx-15 basic-info-shadow" type="button" click.trigger="view(person, true)">
+                                    <font-awesome-icon icon="pen-alt"></font-awesome-icon>
+                                </button>
+                                <button class="btn u-btn-red basic-info-shadow" type="button" click.trigger="delete(person)">
+                                    <font-awesome-icon icon="trash"></font-awesome-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="d-flex flex-row justify-content-end align-items-center g-px-15 g-py-30">
+                <!-- Container Stats Grid Pagination Buttons -->
+                <ul class="g-mb-0 g-pr-7 pagination" if.bind="pageCount > 1">
+                    <!-- Go to Previous Page Button -->
+                    <li class="page-item" if.bind="currentPage > 0">
+                        <button class="page-link" click.trigger="goToPage(currentPage - 1)">
+                            <span class="fa fa-chevron-left g-cursor-pointer" aria-hidden="true"></span>
+                        </button>
+                    </li>
+                    <!-- Go to Page Index Button -->
+                    <li class="page-item" repeat.for="pageIndex of pagerButtons">
+                        <button class="page-link ${ currentPage === pageIndex ? 'page-link-active' : '' }" click.trigger="goToPage(pageIndex)">
+                            <span class="g-cursor-pointer">${pageIndex + 1}</span>
+                        </button>
+                    </li>
+                    <!-- Go To Next Page Button -->
+                    <li class="page-item" if.bind="currentPage < pageCount - 1">
+                        <button class="page-link" click.trigger="goToPage(currentPage + 1)">
+                            <span class="fa fa-chevron-right g-cursor-pointer" aria-hidden="true"></span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</template>

@@ -1,0 +1,26 @@
+<template>
+    <require from="./sidebar.css"></require> 
+    <require from="../bootstrap-tooltip"></require>
+
+    <nav class="d-flex flex-column sidebar ${sidebarCollapsed ? 'collapsed' : ''} ${navigationLoaded ? 'sidebar-transition' : ''} h-100">
+        <ul id="sidebar" class="mb-auto list-unstyled">
+        
+            
+            
+            <li class="${item.selected ? 'selected' : ''}" element.ref="item.element" repeat.for="item of navigation" click.trigger="goToRoute(item)">
+                <a bootstrap-tooltip="title.bind: item.text; enabled.bind: navigationCollapsed;" data-placement="right" style="height: 50px;">
+                    <i class="${!sidebarCollapsed ? 'g-ml-5' : ''} fa ${item.icon}"></i>
+                    <span class="au-animate" if.bind="!navigationCollapsed">${item.text}</span>
+                </a>
+            </li>
+
+
+        </ul>
+
+        <div class="collapse-button g-cursor-pointer" click.trigger="toggleSidebar()">
+            <i class="g-pl-5 fa ${!sidebarCollapsed ? 'fa-angle-double-left' : 'fa-angle-double-right'}"></i>
+            <span class="g-pl-10 au-animate" if.bind="!navigationCollapsed">Collapse</span>
+        </div>
+    </nav>
+
+</template>

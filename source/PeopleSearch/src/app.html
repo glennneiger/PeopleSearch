@@ -7,12 +7,15 @@
     <require from="./branding.css"></require>
     <require from="./app.css"></require>
     <require from="resources/elements/header/header"></require>
+    <require from="resources/elements/sidebar/sidebar"></require>
 
     <loading-indicator loading.bind="router.isNavigating || api.isRequesting"></loading-indicator>
 
     <header-nav user.bind="user" sidebar-collapsed.two-way="sidebarCollapsed"></header-nav>
 
     <main>
+        <!-- Navigation Sidebar -->
+        <sidebar-nav user.bind="user" sidebar-collapsed.two-way="sidebarCollapsed"></sidebar-nav>
         <!-- Page Content  -->
         <section>
 

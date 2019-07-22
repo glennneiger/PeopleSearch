@@ -1,0 +1,53 @@
+<template>
+    <require from="./person-dialog.css"></require>
+    <require from="resources/value-converters/phone-input-mask"></require>
+
+    <div tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body g-pa-0">
+                    <div class="d-flex flex-row g-px-50 g-pt-30 bg-w-75 list-loading-indicator">
+                        <h2 class="h2 siq-color-blue g-mb-10" style="font-size: 2rem !important;">${person.id ? 'Edit Person': 'New Person'}</h2>
+                        <div class="text-center" if.bind="isProcessing" style="margin-left:20px;">
+                            <div class="spinner-border" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="g-px-50 g-pt-30">
+                        <div class="d-flex flex-row w-100 g-mb-10 form-group row" repeat.for="error of validationController.errors">
+                            <span class="help-block text-danger">${error.message}</span>
+                        </div>
+                        <div class="d-flex flex-row w-100 g-mb-10 form-group row">
+                            <span if.bind="person.id"><span class="font-weight-bold g-mr-5" if.bind="person.id">Identifier:</span>${person.id}</span>
+                        </div>
+                        <div class="d-flex flex-row w-100 g-mb-10 form-group row">
+                            <label class="my-1 font-weight-bold g-mr-5 col-form-label" for="ctrl1">First Name:</label>
+                            <span class="font-weight-bold g-mr-5" if.bind="!editMode">${person.firstName}</span>
+                            <input id="ctrl1" if.bind="editMode" focus.one-time="true" class="form-control input-rounded" type="text" value.bind="person.firstName & validate:firstNameRules & debounce">
+                        </div>
+                        <div class="d-flex flex-row w-100 g-mb-10 form-group row">
+                            <label class="my-1 font-weight-bold g-mr-5 col-form-label" for="ctrl2">Last Name:</label>
+                            <span class="font-weight-bold g-mr-5" if.bind="!editMode">${person.lastName}</span>
+                            <input id="ctrl2" if.bind="editMode" class="form-control input-rounded" type="text" value.bind="person.lastName & validate:lastNameRules & debounce">
+                        </div>
+                        <div class="d-flex flex-row w-100 g-mb-10 form-group row">
+                            <label class="my-1 font-weight-bold g-mr-5 col-form-label" for="ctrl3">Phone Number:</label>
+                            <span class="font-weight-bold g-mr-5" if.bind="!editMode">${person.phoneNumber}</span>
+                            <input id="ctrl3" if.bind="editMode" class="form-control input-rounded" type="text" value.bind="person.phoneNumber & validate:phoneNumberRules & debounce" phone-input-mask>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row siq-full-width g-px-50 g-py-30" style="background: white;">
+                        <div style="float:right">
+                            <button if.bind="!editMode" class="ml-auto btn btn-md u-btn-blue btn-ok g-mx-15" type="button" click.trigger="edit()">Edit</button>
+                            <button if.bind="!editMode" class="ml-auto btn btn-md u-btn-green btn-ok" type="button" click.trigger="dialogController.ok(dialog)">Ok</button>
+                            <button disabled.bind="isProcessing" if.bind="editMode" class="ml-auto btn btn-md u-btn-green btn-ok g-mx-15" type="button" click.trigger="save()">Save</button>
+                            <button disabled.bind="isProcessing" if.bind="editMode && isDialog" class="ml-auto btn btn-md u-btn-red btn-ok" type="button" click.trigger="dialogController.ok(dialog)">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>

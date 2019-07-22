@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using PeopleSearch.Data.Contexts;
 using PeopleSearch.Data.Entities;
 using PeopleSearch.Extentions;
+using PeopleSearch.Models;
 
 namespace PeopleSearch.Data.Services
 {
@@ -55,6 +56,11 @@ namespace PeopleSearch.Data.Services
         {
             person.GuardNull(nameof(person));
 
+            if (person.Id != 0)
+            {
+                throw new ArgumentException($"{nameof(person.Id)} must be 0.");
+            }
+
             context.Add(person);
         }
 
@@ -95,6 +101,20 @@ namespace PeopleSearch.Data.Services
         public async Task<int> CountAsync()
         {
             return await context.People.CountAsync();
+        }
+
+        public async Task<int> CountAsync(string searchString)
+        {
+            searchString.GuardEmpty(nameof(searchString));
+
+            return await context.People
+                .Where(p => EF.Functions.Like(p.LastName, $"%{searchString}%") || EF.Functions.Like(p.FirstName, $"%{searchString}%"))
+                .CountAsync();
+        }
+
+        public async Task<IEnumerable<NameStat>> NameStatsAsync()
+        {
+            return await context.NameStats.FromSql("SELECT Top 10 Count(1) as [Count], LastName FROM dbo.People GROUP BY LastName ORDER BY Count DESC, LastName").ToListAsync();
         }
 
         public async Task<bool> SaveAsync()

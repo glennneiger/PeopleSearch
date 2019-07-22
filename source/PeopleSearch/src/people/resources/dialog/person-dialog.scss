@@ -1,0 +1,31 @@
+@import '../../../branding';
+
+ux-dialog-overlay{
+    &.active {
+        opacity: 1;
+        background: rgba(0, 0, 0, .3);
+    }
+}
+
+.siq-divider {
+    height: 3px;
+    background: linear-gradient(90deg, rgba(0,164,219,1) 0%, rgba(246,147,30,1) 25%, rgba(206,37,117,1) 40%, rgba(147,200,48,1) 55%, rgba(0,195,218, 1) 70%, rgba(0, 184,218, 1) 80%, rgba(0,164,219,1) 100%);
+}
+
+div[role="dialog"] {
+    width: 800px;
+
+    .modal-dialog {
+        max-width: 800px;
+    }
+
+    .card-header { 
+        background: $brand-inverse;
+    }
+
+    .btn-ok { 
+        -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,.25);
+        -moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,.25);
+        box-shadow: 3px 3px 5px 0px rgba(0,0,0,.25);
+    }
+}

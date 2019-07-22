@@ -41,22 +41,24 @@ export class App {
         config.options.root = '/';
         
         config.map([
+            { route: '', redirect: 'people' },
+            { route: 'index', redirect: 'people' },
             {
-                route: ['', 'index' ],
-                name: 'Home',
+                route: ['home','people' ],
+                name: 'people',
                 moduleId: 'people/index',
                 nav:true
+            },{
+                route: 'search',
+                name: 'search',
+                moduleId: 'people/search'
             },
-            //{
-            //    route: 'list',
-            //    name: 'searchfast',
-            //    moduleId: 'people/search'
-            //},
-            //{
-            //    route: 'list',
-            //    name: 'searchslow',
-            //    moduleId: 'people/search'
-            //},
+            {
+                route: 'create',
+                name: 'create',
+                moduleId: 'people/create',
+                activationStrategy: activationStrategy.invokeLifecycle
+            }
             //{
             //    route: 'new',
             //    name: 'create',

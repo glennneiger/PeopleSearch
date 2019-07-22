@@ -1,14 +1,20 @@
+import { autoinject, Lazy, LogManager, bindable } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
-import { inject } from 'aurelia-framework';
+import { PeopleService } from 'services/people-service';
+import { Stats, NameStats } from 'models/stats';
 
-@inject(Router)
+@autoinject()
 export class Index {
-    message = 'Create, Edit or Search People';
+    isLoaded: boolean = false;
+    stats: Stats;
 
-  constructor(
-      private router: Router) { }
+    constructor(
+        private router: Router,
+        private peopleService: PeopleService
+    ) { }
 
-  activate() {
-        
+    async activate() {
+        this.stats = await this.peopleService.getStats();
+        this.isLoaded = true;
     }
 }

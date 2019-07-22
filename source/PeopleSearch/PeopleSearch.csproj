@@ -6,14 +6,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="src\models\person.ts" />
+    <None Remove="src\models\Stats.ts" />
+    <None Remove="src\people\create.ts" />
     <None Remove="src\resources\text.ts" />
+    <None Remove="src\resources\value-converters\phone-input-mask.ts" />
+    <None Remove="src\services\people-service.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="aurelia_project\" />
     <Folder Include="custom_typings\" />
-    <Folder Include="src\data\" />
-    <Folder Include="src\services\" />
+    <Folder Include="src\resources\elements\sidebar\" />
     <Folder Include="test\" />
     <Folder Include="wwwroot\scripts\" />
   </ItemGroup>
@@ -28,6 +32,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="src\models\person.ts" />
+    <TypeScriptCompile Include="src\models\stats.ts" />
+    <TypeScriptCompile Include="src\people\create.ts" />
+    <TypeScriptCompile Include="src\resources\value-converters\phone-input-mask.ts" />
+    <TypeScriptCompile Include="src\services\people-service.ts" />
     <TypeScriptCompile Include="src\text.ts" />
   </ItemGroup>
 
