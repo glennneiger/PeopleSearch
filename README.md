@@ -27,4 +27,6 @@ open the solution in VS and build
  3. Access app using Chrome at `http://localhost:5000`
 
 
-![alt text](screen.png "screen shot")
+![alt text](screen.png "Home screen shot")
+![alt text](screen1.png "Search screen shot")
+![alt text](screen2.png "New person screen shot")
