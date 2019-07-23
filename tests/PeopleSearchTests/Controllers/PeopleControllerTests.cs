@@ -69,7 +69,7 @@ namespace PeopleSearchTests.Controllers
                 new Person { Id = 10, FirstName = "Erik", LastName = "Smith", PhoneNumber = "(627) 580-8133" }
            });
 
-            var result = await this.controller.FindPeople("Smith", 0, 10);
+            var result = await this.controller.FindPeople("Smith", 0, 10, false);
 
             mockPeopleService.Verify(m => m.FindAsync("Smith", 0, 10));
 
